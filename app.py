@@ -2,6 +2,7 @@ import logging
 import queue
 import time
 
+import numpy as np
 from colornamer import get_color_from_rgb
 import streamlit as st
 from streamlit_webrtc import (
