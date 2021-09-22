@@ -42,7 +42,7 @@ while True:
         img_rgb = video_frame.to_ndarray(format="rgb24")
         image_placeholder.image(img_rgb)
         
-        avg_color_per_row = np.average(np_img, axis=0)
+        avg_color_per_row = np.average(img_rgb, axis=0)
         avg_color = np.average(avg_color_per_row, axis=0)
         color_names = get_color_from_rgb(avg_color)
         text_placeholder.markdown(f"The Common Color in selected zone is: {color_names['common_color']}")
