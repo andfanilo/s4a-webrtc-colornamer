@@ -12,6 +12,8 @@ RTC_CONFIGURATION = RTCConfiguration(
     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 )
 
-
 """ Simple video loopback """
-webrtc_streamer(key="loopback")
+webrtc_streamer(
+    key="loopback",
+    rtc_configuration=RTC_CONFIGURATION,
+)
