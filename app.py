@@ -1,4 +1,7 @@
+import logging
 import queue
+import time
+
 import streamlit as st
 from streamlit_webrtc import (
     RTCConfiguration,
@@ -6,6 +9,8 @@ from streamlit_webrtc import (
     WebRtcMode,
     webrtc_streamer,
 )
+
+logger = logging.getLogger(__name__)
 
 st.title("WebRTC Colornamer")
 image_placeholder = st.empty()
@@ -27,11 +32,13 @@ while True:
         try:
             video_frame = webrtc_ctx.video_receiver.get_frame(timeout=1)
         except queue.Empty:
-            print("Queue is empty. Abort.")
+            logger.warning(" Queue is empty. Abort.")
             break
 
         img_rgb = video_frame.to_ndarray(format="rgb24")
         image_placeholder.image(img_rgb)
+        logger.info("Displayed a frame, let's sleep for a second.")
+        time.sleep(1)
     else:
-        print("AudioReciver is not set. Abort.")
+        logger.warning("AudioReciver is not set. Abort.")
         break
