@@ -1,3 +1,4 @@
+import queue
 import streamlit as st
 from streamlit_webrtc import (
     RTCConfiguration,
