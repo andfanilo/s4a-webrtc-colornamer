@@ -14,7 +14,7 @@ RTC_CONFIGURATION = RTCConfiguration(
 )
 
 """ Simple video loopback """
-webrtc_streamer(
+webrtc_ctx = webrtc_streamer(
     key="video-colornamer",
     mode=WebRtcMode.SENDONLY,
     rtc_configuration=RTC_CONFIGURATION,
